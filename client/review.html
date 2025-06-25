@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>  
+<head>
+    <style>
+        .navbar {
+            background-color: #a0d1ff;
+            overflow: hidden;
+            justify-content: center;
+            padding: 10px;
+            display: flex;
+            font-style: bold;
+            font-family: fantasy;
+            font-size: 110%;
+        }
+        .container {
+            width: 100%;
+            margin: auto;
+            padding: 20px;
+        }
+        .movieInfo {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+        .reviewInfo {
+            width: 80%;
+            margin-bottom: 20px;
+            margin-top: 80px;
+        }
+        .divWrapper {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        .commentFlex {
+            display: flex;
+            flex-direction: row;
+            gap: 32px;
+            margin-top: 24px;
+            align-items: flex-start;
+        }
+        .commentForm {
+            flex: 1 1 0;
+            max-width: 350px;
+            font-size: 110%;
+        }
+        .commentSection {
+            flex: 1 1 0;
+            background: #eaf6fa;
+            padding: 16px;
+            border-radius: 6px;
+            max-width: 900px;      /* Increased from 400px */
+            min-height: 120px;
+        }
+        .commentSection ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+        .commentSection li {
+            margin: 0;
+            background: #fff;
+            border-radius: 4px;
+            padding: 8px 12px;
+            min-width: 120px;      /* wider minimum */
+            max-width: 300px;      /* much wider max */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+            word-break: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+            font-size: 0.95em;
+        }
+        .reviewTitle {
+            margin-bottom: 10px;
+            font-style: italic;
+            padding-left: 20px;
+            font-size: 190%;
+        
+        }
+        .reviewContent, .rantContent, .raveContent, .rating {
+            margin-bottom: 20px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 85%;
+            font-size: 120%;
+            line-height: 1.8;
+        }
+        .reviewContent{
+            background-color: #f5f5dc;
+            border-radius: 25px;
+            padding : 50px;
+            border: 2px solid #000000;
+
+        }
+        .rantContent{
+            background-color: #d3c4be;
+            border-radius: 25px;
+            padding : 50px;
+            border: 2px solid #000000;
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(.4,0,.2,1), opacity 0.5s;
+            opacity: 1;
+            
+        }
+        .rantContent.hidden {
+            max-height: 0;
+            opacity: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            pointer-events: none;
+        }
+        .raveContent{
+            background-color: #c4d3be;
+            border-radius: 25px;
+            padding : 50px;
+            border: 2px solid #000000;
+        }
+        .rating {
+            background-color: #f0f8ff;
+            border-radius: 25px;
+            padding : 50px;
+            border: 2px solid #000000;
+        }
+        .movieDetails{
+            font-size: 110%;
+            background-color: #999999;
+            border-radius: 25px;
+            padding : 40px;
+            margin-right: 85px;
+        }
+        .movieTitle {
+            font-size: 250%;
+            font-weight: 600;
+            font-family:fantasy;
+            letter-spacing: .1em;
+            padding-left: 25%;     
+           text-decoration: overline underline;
+           text-decoration-color: #8b68ec;
+           text-decoration-style: wavy;
+        }
+        .dropdown {
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            padding : 0;
+        }
+        .moviePoster {
+            width: 85%;
+            height: auto;
+            border-radius: 10px;
+            margin-right : 50px;
+            padding-bottom: 10%;
+            padding-top: 5%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+    </nav>
+
+    <div class="container">
+        <div class="divWrapper">
+            <div class="movieInfo">
+                <h1 class="movieTitle">{{ reviews.title }}</h1>
+                <img class="moviePoster" src="{{reviews.imageLink}}" alt="Movie Poster">
+                <div class="movieDetails">
+                    <p>Author: {{reviews.author}}</p>
+                    <p>Release Date: {{reviews.releaseDate}}</p>
+                    <p>Genre: {{reviews.genres}}</p>
+                    <p>Runtime: {{reviews.runtime}} minutes</p>
+                    <p>Main Character: {{reviews.mc}}</p>
+                </div>
+            </div>
+
+            <div class="reviewInfo">
+                <h2 class="reviewTitle">{{ reviews.reviewTitle }}</h2>
+                <p class="reviewContent">{{reviews.review}}</p>
+                <br><br>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <h3 style="margin: 0;">Rant Section (!Spoilers!)</h3>
+                    <button onclick="myFunction()" style="font-size: 110%; padding:0px;">
+                        <img class="dropdown" src="/static/favpng_26554fb2f37df648584dfde1a9028154.png" alt="Toggle Rant">
+                    </button>
+                </div>
+                <p class="rantContent hidden" id="rantContent">{{reviews.rant}}</p>
+                <h3>Rave Section</h3>
+                <p class="raveContent">{{reviews.rave}}</p>
+                <h3>Rating</h3>
+                <p class="rating">
+                    {{ reviews.rating }}/10 <br>
+                    {% for _ in range(reviews.rating) %}
+                        &#x1F31F;
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+
+        <!-- Comment form directly below the review content -->
+        <div class="commentFormWrapper" style="margin-top: 32px;">
+            <h3>Let me know how you feel!  &#x1F60B  :</h3>
+            <form method="POST" class="commentForm" onsubmit="playAndSubmit(event)">
+                <textarea name="comment" id="comment" required placeholder="Write your comment here..." style="font-family:sans-serif;font-size:1.2em;"></textarea>
+                <br>
+                <input type="submit" value="Submit" style="font-size: 110%; padding:10px;">
+            </form>
+        </div>
+
+        <!-- Comments section below the form -->
+        <div class="commentSection" style="margin-top: 16px;">
+            <h5>Comment Section</h5>
+            <ul>
+                {% if reviews.comments %}
+                    {% for comment in reviews.comments %}
+                        <li>
+                            <strong>{{ comment.username }}</strong>: {{ comment.comment }}<br>
+                            <small>{{ comment.timestamp }}</small>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li>No comments yet. Be the first!</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <script>
+function myFunction() {
+    var rant = document.getElementById("rantContent");
+    rant.classList.toggle("hidden");
+}
+function playAndSubmit(event) {
+    event.preventDefault();
+    var audio = new Audio('/static/microwave-ding-104123.mp3');
+    audio.play();
+    setTimeout(function() {
+        event.target.submit();
+    }, 1000); // Adjust delay to match sound length
+    return false;
+}
+
+    </script>
+</body>
+</html>

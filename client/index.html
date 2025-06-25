@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            padding: 32px;
+        }
+
+        .masonry {
+            column-count: 3; /* Adjust for more/less columns */
+            column-gap: 12px;
+            padding: 16px;
+        }
+
+        .masonry img {
+            width: 100%;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            display: block;
+            break-inside: avoid;
+        }
+
+        @media (max-width: 800px) {
+            .masonry {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .masonry {
+                column-count: 1;
+            }
+        }
+            body{
+      background-color: #d5eed5;
+        }
+            h1 {
+      background-color: cadetblue;
+      color: black;
+      text-align: center;
+      padding: 20px;
+    }
+    </style>
+
+  <title style="justify-content: center;">My Review Blog</title>
+
+</head>
+
+<body>
+    <h1 class="header">Welcome to My Review Blog!</h1>
+
+    <div class="masonry">
+        <a href = "/review/6838c138058b528ac37c3114"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSNmKJC-50-Gl7jCFLVYE3IIevUP9oJLRXqjrK2lEySbTQ8m7Gr" alt="Strange Magic"></a>
+        <a href = "/review/6834e17c2120a5c143489e46"><img src="https://girlrepresentationinfilm.wordpress.com/wp-content/uploads/2015/07/girlfight-2.jpg?w=640" alt="Girl Fight"></a>
+        <a href = "/review/6838c590058b528ac37c3116"><img src="https://i.namu.wiki/i/aiwC99NpVafVvx9iazieQCK6tsEAg1KqRC8Pwg-ur6kQS4BUddPv4ie6aJHCzLBt1iFrYS0DThCukzj2bm-PTA.webp" alt="Call Me By Your Name"></a>
+        <img src="https://primary.jwwb.nl/public/t/k/e/temp-rbtmbzfpibcjdsympssk/image-high-e0pbzx.png?enable-io=true&amp;enable=upscale&amp;width=458" alt="">
+        <img src="https://www.rollingstone.com/wp-content/uploads/2024/05/SMP24V2.jpg?w=1581&h=1054&crop=1" alt="">
+        <img src="https://www.shutterstock.com/image-vector/online-cinema-art-movie-watching-260nw-584655766.jpg" alt="">
+        <img src="https://images.squarespace-cdn.com/content/v1/63db2b360bf82c35c685e7fd/b34e1c19-bb2b-419f-b66c-cf05244e4756/IMG_8303.jpg" alt="">
+    </div>
+</body>
+</html>
